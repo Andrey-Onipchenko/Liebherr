@@ -1,7 +1,9 @@
 <template>
   <div class="popup">
-    <button @click="close">X</button>
-    <p>{{ data.title }}</p>
+    <div class="popup__container">
+      <button class="popup__close" @click="close"></button>
+      <p>{{ data.title }}</p>
+    </div>
   </div>
 </template>
 
@@ -25,7 +27,20 @@ export default {
   left: 10%;
   width: 320px;
   height: 570px;
-  background: #fff;
+  background: #fff url("../assets/images/popup/bg.png") no-repeat;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
   color: #000;
+  &__container {
+    position: relative;
+  }
+  &__close {
+    width: 16px;
+    height: 16px;
+    background: url("../assets/images/popup/close.png");
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
 }
 </style>
