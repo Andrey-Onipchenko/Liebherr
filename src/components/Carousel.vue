@@ -13,7 +13,18 @@
       <slide :index="0">
         <div class="card card-center">
           <div class="card-center__img img"></div>
-          <button class="testproduct" data-product="eags" @click="clickProduct">
+          <button
+            class="testproduct product"
+            data-product="redCaviar"
+            @click="clickProduct($event)"
+          >
+            Click
+          </button>
+          <button
+            class="testproduct2 product"
+            data-product="egg"
+            @click="clickProduct($event)"
+          >
             Click
           </button>
           <img class="cursor" src="../assets/images/ref/cursor.png" alt="" />
@@ -41,18 +52,25 @@ export default {
     return {};
   },
   methods: {
-    clickProduct() {
-      console.log("click");
-      this.$emit("clickProduct", "someValue");
+    clickProduct(event) {
+      this.$emit("clickProduct", event.target.dataset.product);
     },
   },
 };
 </script>
 <style lang="scss">
+.product {
+  visibility: hidden;
+}
 .testproduct {
   position: absolute;
   top: 65px;
   left: 35px;
+}
+.testproduct2 {
+  position: absolute;
+  top: 65px;
+  left: 85px;
 }
 .arr {
   width: 50px;
@@ -142,6 +160,9 @@ export default {
     top: 50%;
   }
   .cursor {
+    visibility: visible;
+  }
+  .product {
     visibility: visible;
   }
 }

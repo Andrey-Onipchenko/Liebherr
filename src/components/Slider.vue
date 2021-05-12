@@ -2,7 +2,7 @@
   <div class="slider">
     <div class="container">
       <Carousel @clickProduct="openPopup" />
-      <Popup @close="closePopup" v-if="popup" />
+      <Popup @close="closePopup" v-if="popup" :data="productPopup" />
     </div>
   </div>
 </template>
@@ -14,6 +14,12 @@ export default {
   data() {
     return {
       popup: false,
+      productPopup: null,
+      egg: { title: "title", description: "description" },
+      redCaviar: {
+        title: "title redCaviar",
+        description: "description redCaviar",
+      },
     };
   },
   components: {
@@ -21,7 +27,9 @@ export default {
     Popup,
   },
   methods: {
-    openPopup() {
+    openPopup(prop) {
+      this.productPopup = this[prop];
+
       console.log((this.popup = true));
     },
     closePopup() {
