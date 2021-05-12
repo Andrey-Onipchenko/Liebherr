@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "LiebherrHead Bold";
+  src: local("LiebherrHead Bold"), local("LiebherrHead-Bold"),
+    url("../fonts/LiebherrHead-Black_Web.woff2") format("woff2"),
+    url("../fonts/LiebherrHead-Black_Web.woff") format("woff"),
+    url("../fonts/LiebherrHead-Black_Web.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "LiebherrText Regular";
+  src: local("LiebherrText Regular"), local("LiebherrText-Regular"),
+    url("../fonts/LiebherrText-Regular_Web.woff2") format("woff2"),
+    url("../fonts/LiebherrText-Regular_Web.woff") format("woff"),
+    url("../fonts/LiebherrText-Regular_Web.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
