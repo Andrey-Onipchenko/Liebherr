@@ -3,6 +3,8 @@
     <div class="popup__container">
       <button class="popup__close" @click="close"></button>
       <p>{{ data.title }}</p>
+      <p>{{ data.description }}</p>
+      <p>hi</p>
     </div>
   </div>
 </template>
