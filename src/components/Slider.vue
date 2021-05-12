@@ -1,20 +1,32 @@
 <template>
   <div class="slider">
     <div class="container">
-      <!-- <h3 class="slider__title">На двадцатом съезде партии прозвучало</h3>
-      <p class="slider__subtitle">
-        В своём стремлении улучшить пользовательский опыт мы упускаем.
-      </p> -->
-      <Carousel />
+      <Carousel @clickProduct="openPopup" />
+      <Popup @close="closePopup" v-if="popup" />
     </div>
   </div>
 </template>
 
 <script>
 import Carousel from "@/components/Carousel.vue";
+import Popup from "@/components/Popup.vue";
 export default {
+  data() {
+    return {
+      popup: false,
+    };
+  },
   components: {
     Carousel,
+    Popup,
+  },
+  methods: {
+    openPopup() {
+      console.log((this.popup = true));
+    },
+    closePopup() {
+      console.log((this.popup = false));
+    },
   },
 };
 </script>
@@ -25,7 +37,7 @@ export default {
   height: 100vh;
   background: url("../assets/images/slider_bg.png") no-repeat;
   background-size: cover;
-  // padding-top: 72px;
+  position: relative;
   &__title {
     font-family: "LiebherrHead Bold", sans-serif;
     font-weight: 900;
