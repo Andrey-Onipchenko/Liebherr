@@ -12,7 +12,15 @@
     >
       <slide :index="0">
         <div class="card card-center">
-          <div class="card-center__img img"></div>
+          <div class="card-center__img img" id="img-container">
+            <!-- <div id="img-container" style="width: 400px">
+              </div> -->
+            <img
+              id="card-center__img"
+              src="../assets/images/ref/black_open.png"
+              alt=""
+            />
+          </div>
           <button
             class="testproduct product"
             data-product="redCaviar"
@@ -47,9 +55,18 @@
 </template>
 
 <script>
+import ImageZoom from "@/plugin/js-image-zoom.js";
 export default {
   data() {
     return {};
+  },
+  mounted() {
+    console.log(document.getElementsByClassName("card-center__img"));
+    new ImageZoom(document.getElementById("img-container"), {
+      width: 255,
+      zoomWidth: 400,
+      offset: { vertical: 0, horizontal: 100 },
+    });
   },
   methods: {
     clickProduct(event) {
@@ -194,5 +211,8 @@ export default {
 }
 .next {
   right: 30px !important;
+}
+.carousel-3d-slide {
+  overflow: initial !important;
 }
 </style>
