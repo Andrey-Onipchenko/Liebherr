@@ -12,10 +12,20 @@
     >
       <slide :index="0">
         <div class="card card-center">
-          <div class="card-center__img img" id="img-container">
-            <!-- <div id="img-container" style="width: 400px">
+          <div class="ref-black"></div>
+          <div class="image-zoom">
+            <div class="image-zoom__wrap">
+              <img
+                class="image-zoom__black"
+                src="../assets/images/ref_black/ref-black__open-full.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <!-- <div class="card-center__img img" id="img-container"> -->
+          <!-- <div id="img-container" style="width: 400px">
               </div> -->
-            <img
+          <!-- <img
               id="card-center__img"
               src="../assets/images/ref/black_open.png"
               alt=""
@@ -34,7 +44,8 @@
             @click="clickProduct($event)"
           >
             Click
-          </button>
+          </button> -->
+          <!-- </div> -->
           <img class="cursor" src="../assets/images/ref/cursor.png" alt="" />
         </div>
       </slide>
@@ -55,18 +66,19 @@
 </template>
 
 <script>
-import ImageZoom from "@/plugin/js-image-zoom.js";
+import imageZoom from "@/plugin/js-image-zoom.js";
 export default {
   data() {
     return {};
   },
   mounted() {
-    console.log(document.getElementsByClassName("card-center__img"));
-    new ImageZoom(document.getElementById("img-container"), {
-      width: 255,
-      zoomWidth: 400,
-      offset: { vertical: 0, horizontal: 100 },
-    });
+    let imgZoom = new imageZoom(".ref-black", ".image-zoom__black");
+    console.log(imgZoom);
+    // new ImageZoom(document.getElementById("img-container"), {
+    //   width: 255,
+    //   zoomWidth: 400,
+    //   offset: { vertical: 0, horizontal: 100 },
+    // });
   },
   methods: {
     clickProduct(event) {
@@ -138,6 +150,7 @@ export default {
   }
 }
 .card-center {
+  border: 2px solid black;
   &__img {
     background: url("../assets/images/ref/black_close.png") no-repeat;
     background-size: cover;
@@ -149,6 +162,42 @@ export default {
     height: 370px;
   }
 }
+
+.ref-black {
+  background: url("../assets/images/ref_black/ref-black__open.png") no-repeat
+    center;
+  background-size: contain;
+  border: 1px solid red;
+  height: 550px;
+}
+.image-zoom {
+  position: absolute;
+  top: 0;
+  right: -110%;
+  width: 255px;
+  height: 200px;
+  border: 1px solid red;
+  overflow: hidden;
+  &__wrap {
+    position: relative;
+  }
+  // &__black {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 765px;
+  // }
+  // background: url("../assets/images/ref_black/ref-black__open-full.png")
+  //   no-repeat center top;
+}
+.image-zoom__black {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 765px !important;
+}
+
+// slider
 .current {
   .img {
     width: 260px;
