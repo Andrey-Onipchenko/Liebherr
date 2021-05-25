@@ -11,55 +11,49 @@
       :space="400"
     >
       <slide :index="0">
-        <div class="card card-center">
-          <div class="ref-black"></div>
+        <div class="icebox icebox-center">
+          <div class="icebox__black"></div>
           <div class="image-zoom">
             <div class="image-zoom__wrap">
               <img
                 class="image-zoom__black"
-                src="../assets/images/ref_black/ref-black__open-full.png"
+                src="../assets/images/black/icebox-black__open-full.png"
                 alt=""
               />
             </div>
           </div>
-          <!-- <div class="card-center__img img" id="img-container"> -->
-          <!-- <div id="img-container" style="width: 400px">
-              </div> -->
-          <!-- <img
-              id="card-center__img"
-              src="../assets/images/ref/black_open.png"
-              alt=""
-            />
-          </div>
-          <button
-            class="testproduct product"
-            data-product="redCaviar"
-            @click="clickProduct($event)"
-          >
-            Click
-          </button>
-          <button
-            class="testproduct2 product"
-            data-product="egg"
-            @click="clickProduct($event)"
-          >
-            Click
-          </button> -->
-          <!-- </div> -->
           <img class="cursor" src="../assets/images/ref/cursor.png" alt="" />
         </div>
       </slide>
       <slide :index="1">
-        <div class="card card-right">
-          <div class="card-right__img img"></div>
+        <div class="icebox icebox-right">
+          <div class="icebox__white"></div>
+          <div class="image-zoom">
+            <div class="image-zoom__wrap">
+              <img
+                class="image-zoom__white"
+                src="../assets/images/white/white-open__full.png"
+                alt=""
+              />
+            </div>
+          </div>
           <img class="cursor" src="../assets/images/ref/cursor.png" alt="" />
         </div>
       </slide>
       <slide :index="2">
-        <div class="card card-left">
-          <div class="card-left__img img"></div>
+        <div class="icebox icebox-left">
+          <div class="icebox__grey"></div>
+          <div class="image-zoom">
+            <div class="image-zoom__wrap">
+              <img
+                class="image-zoom__grey"
+                src="../assets/images/grey/grey-open__full.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <img class="cursor" src="../assets/images/ref/cursor.png" alt="" />
         </div>
-        <img class="cursor" src="../assets/images/ref/cursor.png" alt="" />
       </slide>
     </carousel-3d>
   </div>
@@ -72,13 +66,9 @@ export default {
     return {};
   },
   mounted() {
-    let imgZoom = new imageZoom(".ref-black", ".image-zoom__black");
-    console.log(imgZoom);
-    // new ImageZoom(document.getElementById("img-container"), {
-    //   width: 255,
-    //   zoomWidth: 400,
-    //   offset: { vertical: 0, horizontal: 100 },
-    // });
+    new imageZoom(".icebox__black", ".image-zoom__black");
+    new imageZoom(".icebox__white", ".image-zoom__white");
+    new imageZoom(".icebox__grey", ".image-zoom__grey");
   },
   methods: {
     clickProduct(event) {
@@ -88,31 +78,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.product {
-  visibility: hidden;
-}
-.testproduct {
-  position: absolute;
-  top: 65px;
-  left: 35px;
-}
-.testproduct2 {
-  position: absolute;
-  top: 65px;
-  left: 85px;
-}
-.arr {
-  width: 50px;
-  height: 50px;
-}
-.cursor {
-  position: absolute;
-  visibility: hidden;
-  bottom: 50px;
-  width: 60% !important;
-  left: 35px;
-}
-.card {
+.icebox {
   max-width: 255px;
   min-height: 625px;
   border-radius: 5px;
@@ -124,50 +90,62 @@ export default {
     background: url("../assets/images/bg_mini.png") center 85% no-repeat;
     background-size: contain;
   }
-}
-.card-left {
-  &__img {
-    background: url("../assets/images/ref/grey_close.png") no-repeat;
-    background-size: cover;
-    position: absolute;
-    left: 50%;
-    top: 70%;
-    transform: translate(-50%, -50%);
-    width: 132px;
-    height: 370px;
+  &__black {
+    background: url("../assets/images/black/icebox-black__close.png") no-repeat
+      center;
+    background-size: contain;
+    height: 550px;
   }
-}
-.card-right {
-  &__img {
-    background: url("../assets/images/ref/white_close.png") no-repeat;
-    background-size: cover;
-    position: absolute;
-    left: 50%;
-    top: 70%;
-    transform: translate(-50%, -50%);
-    width: 132px;
-    height: 370px;
+  &__white {
+    background: url("../assets/images/white/white-close.png") no-repeat center;
+    background-size: contain;
+    height: 550px;
   }
-}
-.card-center {
-  border: 2px solid black;
-  &__img {
-    background: url("../assets/images/ref/black_close.png") no-repeat;
-    background-size: cover;
-    position: absolute;
-    left: 50%;
-    top: 70%;
-    transform: translate(-50%, -50%);
-    width: 132px;
-    height: 370px;
+  &__grey {
+    background: url("../assets/images/grey/grey-close.png") no-repeat center;
+    background-size: contain;
+    height: 550px;
   }
 }
 
+.current {
+  .icebox {
+    &:hover {
+      .image-zoom {
+        display: block;
+      }
+    }
+    &__black {
+      background: url("../assets/images/black/icebox-black__open.png") no-repeat
+        center;
+      background-size: contain;
+      height: 550px;
+    }
+    &__white {
+      background: url("../assets/images/white/white-open.png") no-repeat center;
+      background-size: contain;
+      height: 550px;
+    }
+    &__grey {
+      background: url("../assets/images/grey/grey-open.png") no-repeat center;
+      background-size: contain;
+      height: 550px;
+    }
+  }
+}
+
+.cursor {
+  position: absolute;
+  visibility: hidden;
+  bottom: 50px;
+  width: 60% !important;
+  left: 35px;
+}
+
 .ref-black {
-  background: url("../assets/images/ref_black/ref-black__open.png") no-repeat
+  background: url("../assets/images/black/icebox-black__open.png") no-repeat
     center;
   background-size: contain;
-  border: 1px solid red;
   height: 550px;
 }
 .image-zoom {
@@ -176,28 +154,22 @@ export default {
   right: -110%;
   width: 255px;
   height: 200px;
-  border: 1px solid red;
   overflow: hidden;
+  display: none;
   &__wrap {
     position: relative;
   }
-  // &__black {
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   width: 765px;
-  // }
-  // background: url("../assets/images/ref_black/ref-black__open-full.png")
-  //   no-repeat center top;
-}
-.image-zoom__black {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 765px !important;
+  &__black,
+  &__white,
+  &__grey {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 765px !important;
+  }
 }
 
-// slider
+// carousel-3d-slide
 .current {
   .img {
     width: 260px;
@@ -209,7 +181,7 @@ export default {
     background-size: contain;
   }
   .card-center {
-    &__img {
+    .ref-black {
       background: url("../assets/images/ref/black_open.png") no-repeat;
       background-size: contain;
       top: 50%;
@@ -228,11 +200,7 @@ export default {
   .cursor {
     visibility: visible;
   }
-  .product {
-    visibility: visible;
-  }
 }
-
 .carousel-3d-slide {
   border: none !important;
   background: none !important;
