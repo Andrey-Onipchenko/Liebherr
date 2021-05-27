@@ -1,6 +1,6 @@
 <template>
   <div id="carousel">
-    <h3 class="carousel__title">На двадцатом съезде партии прозвучало</h3>
+    <!-- <h3 class="carousel__title">На двадцатом съезде партии прозвучало</h3> -->
     <carousel-3d
       :width="255"
       :height="625"
