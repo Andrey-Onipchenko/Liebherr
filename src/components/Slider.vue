@@ -47,6 +47,7 @@ export default {
       } else {
         this.searchProductByIndex();
       }
+      console.log(this.index);
     },
     backProduct() {
       this.index -= 1;
