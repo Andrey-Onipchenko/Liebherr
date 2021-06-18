@@ -2,7 +2,13 @@
   <div class="slider">
     <div class="container">
       <Carousel @chengeProduct="openPopup" />
-      <Popup @close="closePopup" v-if="popup" :data="productPopup" />
+      <Popup
+        @close="closePopup"
+        v-if="popup"
+        :product="productData"
+        @nextProduct="nextProduct"
+        @backProduct="backProduct"
+      />
     </div>
   </div>
 </template>
@@ -13,27 +19,52 @@ import Popup from "@/components/Popup.vue";
 export default {
   data() {
     return {
+      products: null,
       popup: false,
-      productPopup: null,
-      cake: { title: "title", description: "description" },
-      redCaviar: {
-        title: "title redCaviar",
-        description: "description redCaviar",
-      },
+      index: null,
+      productData: {},
     };
   },
   components: {
     Carousel,
     Popup,
   },
+
   methods: {
     openPopup(prop) {
-      this.productPopup = this[prop];
+      this.productData = this.products.filter((el) => el.name === prop)[0];
+      this.index = this.productData.position;
       this.popup = true;
     },
     closePopup() {
       this.popup = false;
     },
+    nextProduct() {
+      this.index += 1;
+      if (this.index > this.products.length) {
+        this.index = 1;
+        this.searchProductByIndex();
+      } else {
+        this.searchProductByIndex();
+      }
+    },
+    backProduct() {
+      this.index -= 1;
+      if (this.index === 0) {
+        this.index = this.products.length;
+        this.searchProductByIndex();
+      } else {
+        this.searchProductByIndex();
+      }
+    },
+    searchProductByIndex() {
+      this.productData = this.products.filter(
+        (el) => el.position === this.index
+      )[0];
+    },
+  },
+  mounted() {
+    this.products = this.$store.getters.getProduct;
   },
 };
 </script>

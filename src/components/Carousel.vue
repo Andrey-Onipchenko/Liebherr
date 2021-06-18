@@ -22,12 +22,6 @@
           <div class="icebox icebox-center">
             <div class="icebox__black">
               <SlideProducts @chengeProduct="chengeProduct" />
-              <!-- <button class="product__cake" data-product="cake"></button>
-            <button class="product__lemon" data-product="lemon"></button>
-            <button
-              class="product__blueCheese"
-              data-product="blueCheese"
-            ></button> -->
             </div>
             <div class="image-zoom">
               <div class="image-zoom__wrap">
@@ -44,7 +38,7 @@
         <slide :index="1">
           <div class="icebox icebox-right">
             <div class="icebox__white">
-              <SlideProducts />
+              <SlideProducts @chengeProduct="chengeProduct" />
             </div>
             <div class="image-zoom">
               <div class="image-zoom__wrap">
@@ -61,7 +55,7 @@
         <slide :index="2">
           <div class="icebox icebox-left">
             <div class="icebox__grey">
-              <SlideProducts />
+              <SlideProducts @chengeProduct="chengeProduct" />
             </div>
             <div class="image-zoom">
               <div class="image-zoom__wrap">
@@ -96,9 +90,9 @@ export default {
     new imageZoom(".icebox__grey", ".image-zoom__grey");
   },
   methods: {
-    clickProduct(event) {
-      this.$emit("clickProduct", event.target.dataset.product);
-    },
+    // clickProduct(event) {
+    //   this.$emit("clickProduct", event.target.dataset.product);
+    // },
     chengeProduct(product) {
       this.$emit("chengeProduct", product);
     },
