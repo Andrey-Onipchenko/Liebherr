@@ -16,6 +16,7 @@ export default {
   data() {
     return {
       products: [
+        { name: "eggs", class: "product__eggs" },
         { name: "cake", class: "product__cake" },
         { name: "lemon", class: "product__lemon" },
         { name: "blueCheese", class: "product__blueCheese" },
@@ -61,6 +62,16 @@ export default {
 }
 .product {
   display: none;
+  &__eggs {
+    @include product(
+      "../assets/images/product/eggs.png",
+      74px,
+      132px,
+      76px,
+      60px
+    );
+    @include hover("../assets/images/product/eggs__hover.png");
+  }
   &__cake {
     @include product("../assets/images/product/cake.png", 50px, 50px);
     @include hover("../assets/images/product/cake__hover.png");

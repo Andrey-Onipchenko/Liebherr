@@ -6,8 +6,8 @@
         <button class="popup__header-left" @click="backProduct"></button>
         <img
           class="popup__header-img"
-          src="../assets/images/product/lemon.png"
-          alt=""
+          :src="product.imgUrl"
+          :alt="product.title"
         />
         <button class="popup__header-right" @click="nextProduct"></button>
       </div>
@@ -65,7 +65,6 @@ export default {
   },
   mounted() {
     this.$refs.popup.style.left = `${window.innerWidth / 2 - 500}px`;
-    console.log(this.product.minDays);
   },
 };
 </script>
@@ -104,6 +103,7 @@ export default {
     justify-content: space-around;
     align-items: center;
     margin-bottom: 110px;
+    height: 100px;
     &-left,
     &-right {
       width: 50px;
